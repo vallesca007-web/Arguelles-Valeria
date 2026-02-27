@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic; // Necesario para el uso de listas
+using System.Collections.Generic; 
 
 namespace EdadesFiltros
 {
@@ -7,54 +7,54 @@ namespace EdadesFiltros
     {
         static void Main(string[] args)
         {
-            int cantidad = LeerNumero("¿Cuántas personas vas a contabilizar?: "); //llama al metodo LeerNumero y le manda el string
+            int cantidad = LeerNumero("¿Cuántas personas vas a contabilizar?: "); 
 
             // Declaración de Listas
             List<string> nombres = new List<string>();
             List<int> edades = new List<int>();
 
-            for (int i = 0; i < cantidad; i++) //Un for que va del 0 al numero que el usuario indico
+            for (int i = 0; i < cantidad; i++) 
             {
-                Console.WriteLine($"\n--- Registro Persona {i + 1} ---"); //i +1 para que no aparezca desde 0
+                Console.WriteLine($"\n--- Registro Persona {i + 1} ---"); 
                 Console.Write("Nombre: ");
-                nombres.Add(Console.ReadLine()); //añade lo que lee a la lista de nombres
+                nombres.Add(Console.ReadLine()); 
 
-                int edad = LeerNumero("Edad: "); //Vuelve a llamar a la verificacion de enteros 
-                edades.Add(edad); //añade el int a la lista de edades
+                int edad = LeerNumero("Edad: "); 
+                edades.Add(edad); 
             }
 
-            ImprimirResultados(nombres, edades); //llama el metodo y le manda las listas
+            ImprimirResultados(nombres, edades); 
 
             Console.WriteLine("\nPresiona cualquier tecla para salir..."); 
-            Console.ReadKey(); //espera alguna tecla para continuar
+            Console.ReadKey(); 
         }
 
-        public static int LeerNumero(string mensaje) //recibe el mensaje que se pone al llamarlo
+        public static int LeerNumero(string mensaje) 
         {
             int resultado;
-            while (true) //crea un bucle infinito, es decir no va a parar hasta un break o un return 
+            while (true) 
             {
-                Console.Write(mensaje); //imprime el mensaje que recibio al ser llamado
-                if (int.TryParse(Console.ReadLine(), out resultado) && resultado > 0) //intenta convertir lo que se lee a int y verifica que sea mayor a 0
+                Console.Write(mensaje); 
+                if (int.TryParse(Console.ReadLine(), out resultado) && resultado > 0) 
                 {
-                    return resultado; //si se cumplieron ambas condiciones devuelve resultado y se acaba el bucle
+                    return resultado; 
                 }
-                Console.WriteLine("Error: Ingresa un número entero positivo."); //si no se cumplio alguna condicion muestra error y se repite el bucle
+                Console.WriteLine("Error: Ingresa un número entero positivo."); 
             }
         }
 
-        public static void ImprimirResultados(List<string> nombres, List<int> edades) //recibe las listas
+        public static void ImprimirResultados(List<string> nombres, List<int> edades) 
         {
-            Console.Clear(); //limpia la pantalla
+            Console.Clear(); 
 
             // 1. LISTA GENERAL (Solo si hay más de una persona)
             if (nombres.Count > 1) //verifica que haya mas de una persona antes de crear la lista general
             {
                 Console.WriteLine("========== LISTADO GENERAL DE PERSONAS ==========");
                 //nombres.Count significa que se devuelve como entero el total del indice de la lista
-                for (int i = 0; i < nombres.Count; i++) //Va desde el indice 0 de la lista hasta el final
+                for (int i = 0; i < nombres.Count; i++) 
                 {
-                    Console.WriteLine($"{i + 1}. {nombres[i]} - {edades[i]} años"); //accede a la posicion de cada lista siendo que i al cambiar hasta el final para por todas
+                    Console.WriteLine($"{i + 1}. {nombres[i]} - {edades[i]} años"); 
                 }
                 Console.WriteLine("================================================\n");
             }
@@ -70,13 +70,13 @@ namespace EdadesFiltros
             }
 
             // 3. MOSTRAR MAYORES
-            if (conteoMayores > 0) //si si hay mayores 
+            if (conteoMayores > 0) 
             {
                 Console.WriteLine("--- Personas Mayores de Edad ---");
-                for (int i = 0; i < nombres.Count; i++) //accede a todos los datos de las filas 
+                for (int i = 0; i < nombres.Count; i++) 
                 {
                     if (edades[i] >= 18)
-                        Console.WriteLine($"- {nombres[i]} ({edades[i]} años)"); //imprime solo los mayores
+                        Console.WriteLine($"- {nombres[i]} ({edades[i]} años)"); 
                 }
             }
 
@@ -93,3 +93,4 @@ namespace EdadesFiltros
         }
     }
 }
+
